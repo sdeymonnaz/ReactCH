@@ -1,8 +1,8 @@
 import { Col, Row} from "react-bootstrap";
-import "./ContentContainer.css";
+import "./ItemListContainer.css";
 
-const ContentContainer = ({greeting}) => {
-    return <div className="conten">
+const ItemListContainer = ({greeting}) => {
+    return <div className="content">
             <Row>
                 <Col>
                     <h1>{greeting}</h1>
@@ -11,4 +11,4 @@ const ContentContainer = ({greeting}) => {
         </div>
 };
 
-export default ContentContainer;
+export default ItemListContainer;

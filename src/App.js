@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NavBar from './components/NavBar.js';
-import ContentContainer from './components/ContentContainer.js';
+import ItemListContainer from './components/ItemListContainer.js';
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <NavBar /> 
       <main className="App-main">
-      <ContentContainer greeting="Welcome to our store!"/>
+      <ItemListContainer greeting="Welcome to our store!"/>
       
         
       </main>
