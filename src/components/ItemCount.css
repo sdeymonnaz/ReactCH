@@ -1,0 +1,11 @@
+#counterContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+  }
+  
+  #counter{
+    display: flex;
+    flex-direction: row;
+    padding: 20px;
+  }

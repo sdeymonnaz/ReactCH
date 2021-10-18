@@ -5,7 +5,7 @@ const CartWidget = () => {
     return(
         <Container>
             <img
-                src={cart} className="App-logo" alt="logo"
+                src={cart}
                 width="30"
                 height="30"
                 className="d-inline-block align-top"
