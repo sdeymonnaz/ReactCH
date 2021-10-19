@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./ItemList.css";
 import { promises } from "./promise";
 import Item from "./Item.js";
 
@@ -23,13 +24,12 @@ const Promises = ({ products }) => {
   }, [products]);
 
   return (
-    <div>
-      <h1>Promises</h1>
+    <div className="container-fluid" id="listContainer">
       <h3 className={isSuccess ? "successMessage" : "errorMessages"}>
         {message}
       </h3>
       {isLoading && <h3>Loading...</h3>}
-      {isFinished && <h2>Se ha finalizado la respuesta</h2>}
+      {isFinished}
       {currentProducts.map((product) => (
         <Item key={product.id} {...product} />
       ))}

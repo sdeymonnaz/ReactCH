@@ -29,11 +29,10 @@ const ItemCount = ({stock, initial}) =>{
     }
 
     return(
-        <div id="counterContainer">
-            <Container>
+            <Container id="counterContainer">
               <Row id='counter'>
                 <Col md='auto'>
-                <Button onClick={decrement}>
+                <Button onClick={decrement} id="sign">
                     <img
                         src={minus}
                         width="30"
@@ -44,10 +43,10 @@ const ItemCount = ({stock, initial}) =>{
                 </Button>
                 </Col>
                 <Col md='auto'>
-                <InputGroup className="mb-3">{count}</InputGroup>
+                <InputGroup className="mb-3" id="countQty">{count}</InputGroup>
                 </Col>
                 <Col md='auto'>
-                <Button onClick={increment}>
+                <Button onClick={increment} id="sign">
                     <img
                         src={plus}
                         width="30"
@@ -60,11 +59,10 @@ const ItemCount = ({stock, initial}) =>{
               </Row>
               <Row>
                 <Col md='auto'>
-                  <Button onClick={onAdd} variant="outline-primary">Agregar al carrito</Button>{' '}
+                  <Button onClick={onAdd} variant="outline-dark">Agregar al carrito</Button>{' '}
                 </Col>
               </Row>   
             </Container>
-        </div>
     );
 };
 

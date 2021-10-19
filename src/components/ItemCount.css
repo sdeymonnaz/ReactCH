@@ -1,11 +1,28 @@
 #counterContainer{
     display: flex;
     flex-direction: column;
-    padding: 20px;
+    justify-content: stretch;
+    align-items: center;
+    width: fit-content;
+    padding: 1rem;
+    background-color: whitesmoke;
+
   }
   
   #counter{
     display: flex;
     flex-direction: row;
-    padding: 20px;
+    justify-content: space-between;
+    padding: 1rem;
+    color: black;
+  }
+
+  #countQty{
+    margin-top: 0.5rem;
+  }
+
+  #sign{
+    color: black;
+    background-color: whitesmoke;
+    border: 0px;
   }
