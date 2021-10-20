@@ -5,10 +5,8 @@ import minus from '../dash-circle.svg';
 import plus from '../plus-circle.svg';
 
 
-const ItemCount = ({stock, initial}) =>{
-    console.log('Hola')
+const ItemCount = ({stock, initial, onAdd}) =>{
     const [count, setCount] = useState(parseInt(initial));
-    const order = []
     stock = parseInt(stock)
 
 
@@ -22,10 +20,6 @@ const ItemCount = ({stock, initial}) =>{
       if (count > 0){
       setCount(count -1);
       }    
-    }
-
-    const onAdd = (count) => {
-      order.push(count)
     }
 
     return(

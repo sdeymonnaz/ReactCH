@@ -10,7 +10,7 @@ const ItemListContainer = ({greeting}) => {
                 <Col>
                     <h1>{greeting}</h1>
                     <ItemList products={products} />
-                    <ItemCount stock="5" initial="1" />
+                    <ItemCount stock="5" initial="1" onAdd=""/>
                 </Col>
             </Row>
         </div>
