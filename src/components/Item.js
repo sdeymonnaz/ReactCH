@@ -12,7 +12,7 @@ const Item = ({id, title, description, price, pictureUrl}) =>{
                 <Card.Title><strong>{title}</strong></Card.Title>
                 <Card.Text><strong>ID:</strong> {id}</Card.Text>
                 <Card.Text><strong>Description:</strong> {description}</Card.Text>
-                <Button onClick={showDetails} variant="primary">Ver detalles del producto</Button>
+                <Button onClick={showDetails} variant="primary">See product details</Button>
                 <ListGroup className="list-group-flush">
                     <ListGroupItem><strong>Price:</strong> ${price.toFixed(2)}</ListGroupItem>
                 </ListGroup>
