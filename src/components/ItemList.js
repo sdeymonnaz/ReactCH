@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Container, Spinner } from "react-bootstrap";
 import "./ItemList.css";
 import { promises } from "./promise";
 import Item from "./Item.js";
@@ -28,7 +29,7 @@ const Promises = ({ products }) => {
       <h3 className={isSuccess ? "successMessage" : "errorMessages"}>
         {message}
       </h3>
-      {isLoading && <h3>Loading...</h3>}
+      {isLoading && <Container fluid> <Spinner animation="border" variant="secondary"/></Container>}
       {isFinished}
       {currentProducts.map((product) => (
         <Item key={product.id} {...product} />

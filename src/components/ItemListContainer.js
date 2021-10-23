@@ -3,6 +3,7 @@ import "./ItemListContainer.css";
 import {products} from '../products.js';
 import ItemList from "./ItemList.js"
 import ItemCount from "./ItemCount";
+import ItemDetailContainer from "./ItemDetailContainer";
 
 const ItemListContainer = ({greeting}) => {
     return <div className="content">
@@ -10,6 +11,7 @@ const ItemListContainer = ({greeting}) => {
                 <Col>
                     <h1>{greeting}</h1>
                     <ItemList products={products} />
+                    <ItemDetailContainer />
                     <ItemCount stock="5" initial="1" onAdd=""/>
                 </Col>
             </Row>
