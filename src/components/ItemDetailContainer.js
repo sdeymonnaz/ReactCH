@@ -1,39 +1,37 @@
-import { useEffect, useState } from "react";
 import { Container, Spinner } from "react-bootstrap";
-import "./ItemList.css";
-import { promises } from "./promise";
+import "./ItemDetailContainer.css";
 import ItemDetail from "./ItemDetail";
+import { products } from "../products";
 
-const ItemDetailContainer = ({itemID}) => {
-    const [message, setMessage] = useState("");
-    const [isSuccess, setIsSuccess] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
-    const [isFinished, setIsFinished] = useState(false);
-    const [currentProducts, setCurrentProducts] = useState([]);
+
+const getItem = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    resolve(products);
+  }, 2000);
+});
+
+getItem
+  .then((result) => {
+    const item = result.find(id => id.id === 3)
+    console.log(item);
+    return item;
+  })
+
+
+
+
   
-    useEffect(() => {
-      if (itemID) {
-        promises(
-          itemID,
-          setMessage,
-          setIsSuccess,
-          setIsLoading,
-          setIsFinished,
-          setCurrentProducts
-        );
-      }
-    }, [itemID]);
 
+const ItemDetailContainer = () => {
+  const item = getItem
+  console.log(item);
   return (
-    <div className="container-fluid" id="listContainer">
-      <h3 className={isSuccess ? "successMessage" : "errorMessages"}>
-        {message}
-      </h3>
-      {isLoading && <Container fluid> <Spinner animation="border" variant="secondary"/></Container>}
-      {isFinished}
-        {itemID && <ItemDetail itemID={itemID}/>}
-    </div>
-  );
-};
+    <Container fluid id="detailContainer">
+      <ItemDetail item= {item} {...item} />
+    </Container>
+
+
+  )}
+
 
 export default ItemDetailContainer;

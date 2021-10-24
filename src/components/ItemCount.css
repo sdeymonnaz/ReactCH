@@ -5,15 +5,13 @@
     align-items: center;
     width: fit-content;
     padding: 1rem;
-    background-color: whitesmoke;
-
   }
   
   #counter{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 1rem;
+    padding: 0.1rem;
     color: black;
   }
 
@@ -23,6 +21,6 @@
 
   #sign{
     color: black;
-    background-color: whitesmoke;
+    background-color: white;
     border: 0px;
   }

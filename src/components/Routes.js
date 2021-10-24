@@ -10,7 +10,7 @@ const Routes = () => {
       <NavBar />
       <Switch>
         <Route exact path="/">
-          <ItemListContainer />
+          <ItemListContainer greeting="Welcome to our store!"/>
         </Route>
         <Route exact path="/category/:categoryId">
           <ItemListContainer />
