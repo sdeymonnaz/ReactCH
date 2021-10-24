@@ -42,6 +42,7 @@ import { Container, Spinner } from "react-bootstrap";
 import "./ItemDetailContainer.css";
 import { getItem } from "./GetItem";
 import ItemDetail from "./ItemDetail";
+import { useParams } from "react-router-dom";
 
 
 const ItemDetailContainer = ({ products }) => {
@@ -50,11 +51,14 @@ const ItemDetailContainer = ({ products }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isFinished, setIsFinished] = useState(false);
   const [currentProducts, setCurrentProducts] = useState([]);
+  const itemId = useParams();
+  console.log(itemId);
 
   useEffect(() => {
     if (products) {
       getItem(
         products,
+        itemId,
         setMessage,
         setIsSuccess,
         setIsLoading,
@@ -62,7 +66,7 @@ const ItemDetailContainer = ({ products }) => {
         setCurrentProducts
       );
     }
-  }, [products]);
+  }, [products, itemId]);
   
 
   return (

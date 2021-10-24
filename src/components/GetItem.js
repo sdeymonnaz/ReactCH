@@ -1,6 +1,8 @@
 
+
 export const getItem = (
     products,
+    itemId,
     setMessage,
     setIsSuccess,
     setIsLoading,
@@ -16,8 +18,12 @@ export const getItem = (
     productsResponse
       .then((result) => {
         setIsSuccess(true);
-        setCurrentProducts(result.find(id => id.id === 3));
-        console.log(result.find(id => id.id === 3));
+        console.log(products)
+        console.log("GetItem #itemId: ", itemId)
+        itemId = parseInt(itemId.itemId)
+        console.log("GetItem #itemId Parsed: ", itemId)
+        setCurrentProducts(result.find(id => id.id === itemId));
+        console.log(result.find(id => id.id === itemId));
       })
       .catch((error) => {
         console.log(`Error in progress ${error}`);
