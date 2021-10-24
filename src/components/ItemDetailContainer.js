@@ -62,8 +62,7 @@ const ItemDetailContainer = ({ products }) => {
         setCurrentProducts
       );
     }
-  }, products);
-  console.log(products);
+  }, [products]);
   
 
   return (
@@ -73,9 +72,7 @@ const ItemDetailContainer = ({ products }) => {
       </h3>
       {isLoading && <Container fluid> <Spinner animation="border" variant="secondary"/></Container>}
       {isFinished}
-      {currentProducts.map((item) => (
-        <ItemDetail item= {item} {...item} />
-      ))}
+      {currentProducts &&  <Container fluid id="detailContainer"> <ItemDetail key= {currentProducts} {...currentProducts} /> </Container>}
     </div>
   );
 };

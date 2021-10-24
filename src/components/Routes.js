@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar.js";
 import ItemDetailContainer from "./ItemDetailContainer";
 import ItemListContainer from "./ItemListContainer";
+import { products } from "../products";
 
 const Routes = () => {
   return (
@@ -13,10 +14,10 @@ const Routes = () => {
           <ItemListContainer greeting="Welcome to our store!"/>
         </Route>
         <Route exact path="/category/:categoryId">
-          <ItemListContainer />
+          <ItemListContainer products={products}/>
         </Route>
         <Route path="/item/:itemId">
-          <ItemDetailContainer />
+          <ItemDetailContainer products={products}/>
         </Route>
         <Route path="/cart">
             <h1>Cart</h1>

@@ -17,6 +17,7 @@ export const getItem = (
       .then((result) => {
         setIsSuccess(true);
         setCurrentProducts(result.find(id => id.id === 3));
+        console.log(result.find(id => id.id === 3));
       })
       .catch((error) => {
         console.log(`Error in progress ${error}`);
