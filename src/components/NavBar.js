@@ -1,19 +1,35 @@
-import {Navbar, Container, Nav} from 'react-bootstrap';
+import {Navbar, Container, Nav, NavDropdown} from 'react-bootstrap';
+import { Link, NavLink } from "react-router-dom";
 import CartWidget from './CartWidget.js';
+import './NavBar.css'
 
 const NavBar = () =>{
     return(
         <Navbar bg="light" expand="lg">
             <Container>
-                <Navbar.Brand href="#home">Apolloni</Navbar.Brand>
+                <Navbar.Brand>
+                    <Link to="/" className="navBarItem">Apolloni Books</Link>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#new">New arrivals</Nav.Link>
-                    <Nav.Link href="#products">Products</Nav.Link>
-                    <Nav.Link href="#contact">Contact</Nav.Link>
-                    <Navbar.Brand href="#cart"><CartWidget /></Navbar.Brand>
+                    <Nav.Link>
+                        <NavLink exact to="/" activeClassName="selected" className="navBarItem">Home</NavLink>
+                    </Nav.Link>
+                    <NavDropdown title="Category" id="basic-nav-dropdown">
+                        <NavDropdown.Item>
+                            <NavLink exact to="/category/novels" activeClassName="selected" className="navBarItem">Novels</NavLink>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item>
+                            <NavLink exact to="/category/fiction" activeClassName="selected" className="navBarItem">Fiction</NavLink>
+                        </NavDropdown.Item>
+                        <NavDropdown.Item>
+                            <NavLink exact to="/category/biography" activeClassName="selected" className="navBarItem">Biography</NavLink>
+                        </NavDropdown.Item>
+                    </NavDropdown>
+                    <Nav.Link>
+                        <NavLink exact to="/cart" className="navBarItem"><CartWidget /></NavLink>
+                    </Nav.Link>
                 </Nav>
                 </Navbar.Collapse>
             </Container>

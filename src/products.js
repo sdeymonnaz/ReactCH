@@ -6,7 +6,7 @@ export const products = [
     "description": "In Herman Melville's Moby-Dick, Captain Ahab is an eerily compelling madman who focuses his distilled hatred and suffering (and that of generations before him) into the pursuit of a creature as vast, dangerous and unknowable as the sea itself.",
     "price": 5.00,
     "pictureUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/1995/9780199535729.jpg",
-    "category": "Classic novels",
+    "category": "Novels",
     "stock": 6
   },
   {
@@ -16,7 +16,7 @@ export const products = [
     "description": "The brilliant, funny, meaningful novel (The New Yorker) that established J. D. Salinger as a leading voice in American literature--and that has instilled in millions of readers around the world a lifelong love of books.",
     "price": 8.00,
     "pictureUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/2419/9780241984758.jpg",
-    "category": "Classic novels",
+    "category": "Novels",
     "stock": 4
   },
   {
@@ -76,7 +76,7 @@ export const products = [
     "description": "Set in the Gulf Stream off the coast of Havana, Hemingway's magnificent fable is the tale of an old man, a young boy and a giant fish. This story of heroic endeavour won Hemingway the Nobel Prize for Literature. It stands as a unique and timeless vision of the beauty and grief of man's challenge to the elements.",
     "price": 7.55,
     "pictureUrl": "https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/0992/9780099273967.jpg",
-    "category": "Classic novels",
+    "category": "Novels",
     "stock": 6
   },
   {

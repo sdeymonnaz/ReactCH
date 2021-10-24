@@ -1,0 +1,9 @@
+.navBarItem{
+    color: black;
+    text-decoration: none;
+}
+
+.selected{
+    color: red;
+    font-weight: 600;
+}
