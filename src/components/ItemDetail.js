@@ -22,7 +22,7 @@ const ItemDetail = ({title, author, category, description, price, pictureUrl, st
               <strong>Description: </strong>{description}
               <p style={{padding: '1rem'}}><strong>Price: </strong>${price}</p>
               <ItemCount stock={stock} initial="0" onAddParams="Add button clicked"/>
-              <Button variant="secondary" href="/" style={{padding: '1rem', backgroundColor: 'rgb(36, 34, 34)'}}>Go back</Button>
+              <Button variant="secondary" href="/" style={{padding: '1rem'}}>Back</Button>
             </Card.Body>
         </Card>
         </Col>

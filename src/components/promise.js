@@ -1,6 +1,7 @@
 
 export const promises = (
     products,
+    categoryId,
     setMessage,
     setIsSuccess,
     setIsLoading,
@@ -16,7 +17,15 @@ export const promises = (
     productsResponse
       .then((result) => {
         setIsSuccess(true);
-        setCurrentProducts(result);
+        console.log("categoryId antes de filtro: ", categoryId.categoryId);
+        if (categoryId.categoryId) {
+          setCurrentProducts(result.filter((product) => product.category === categoryId.categoryId));
+          console.log("Filtrado por categoria: ", result.filter((product) => product.category === categoryId.categoryId));
+        } else{
+          setCurrentProducts(result);
+          console.log("No filtrado: ", result);
+        }
+
       })
       .catch((error) => {
         console.log(`Error in progress ${error}`);

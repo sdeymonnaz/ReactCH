@@ -12,10 +12,8 @@ const NavBar = () =>{
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="me-auto">
-                    <Nav.Link>
-                        <NavLink exact to="/" activeClassName="selected" className="navBarItem">Home</NavLink>
-                    </Nav.Link>
+                <Nav className="me-auto">  
+                    <NavLink exact to="/" activeClassName="selected" className="navBarItem">Home</NavLink>
                     <NavDropdown title="Category" id="basic-nav-dropdown">
                         <NavDropdown.Item>
                             <NavLink exact to="/category/novels" activeClassName="selected" className="navBarItem">Novels</NavLink>
@@ -27,9 +25,7 @@ const NavBar = () =>{
                             <NavLink exact to="/category/biography" activeClassName="selected" className="navBarItem">Biography</NavLink>
                         </NavDropdown.Item>
                     </NavDropdown>
-                    <Nav.Link>
-                        <NavLink exact to="/cart" className="navBarItem"><CartWidget /></NavLink>
-                    </Nav.Link>
+                    <NavLink exact to="/cart" className="navBarItem"><CartWidget /></NavLink>
                 </Nav>
                 </Navbar.Collapse>
             </Container>
