@@ -13,7 +13,6 @@ const ItemDetailContainer = ({ products }) => {
   const [isFinished, setIsFinished] = useState(false);
   const [currentProducts, setCurrentProducts] = useState([]);
   const itemId = useParams();
-  console.log(itemId);
 
   useEffect(() => {
     if (products) {

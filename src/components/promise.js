@@ -17,13 +17,10 @@ export const promises = (
     productsResponse
       .then((result) => {
         setIsSuccess(true);
-        console.log("categoryId antes de filtro: ", categoryId.categoryId);
         if (categoryId.categoryId) {
           setCurrentProducts(result.filter((product) => product.category === categoryId.categoryId));
-          console.log("Filtrado por categoria: ", result.filter((product) => product.category === categoryId.categoryId));
         } else{
           setCurrentProducts(result);
-          console.log("No filtrado: ", result);
         }
 
       })

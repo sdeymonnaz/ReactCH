@@ -4,7 +4,11 @@ import ItemCount from "./ItemCount";
 
 
 
+
 const ItemDetail = ({title, author, category, description, price, pictureUrl, stock}) => {
+
+ 
+
   return (
     <Container>
       <Row xs={2}>
