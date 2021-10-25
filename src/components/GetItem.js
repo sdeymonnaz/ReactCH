@@ -1,5 +1,3 @@
-
-
 export const getItem = (
     products,
     itemId,

@@ -3,7 +3,10 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NavBar from "./NavBar.js";
 import ItemDetailContainer from "./ItemDetailContainer";
 import ItemListContainer from "./ItemListContainer";
+import NotFound from "./NotFound";
+import Cart from "./Cart";
 import { products } from "../products";
+
 
 const Routes = () => {
   return (
@@ -20,10 +23,10 @@ const Routes = () => {
           <ItemDetailContainer products={products}/>
         </Route>
         <Route path="/cart">
-            <h1>Cart</h1>
+            <Cart />
         </Route>
         <Route path="*">
-          <h1>404 Not found</h1>
+          <NotFound />
         </Route>
       </Switch>
     </BrowserRouter>
