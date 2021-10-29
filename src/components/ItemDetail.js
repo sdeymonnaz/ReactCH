@@ -25,7 +25,7 @@ const ItemDetail = ({title, author, category, description, price, pictureUrl, st
               <h5><strong>Category: </strong>{category}</h5>
               <strong>Description: </strong>{description}
               <p style={{padding: '1rem'}}><strong>Price: </strong>${price}</p>
-              <ItemCount stock={stock} initial="0" onAddParams="Add button clicked"/>
+              <ItemCount stock={stock} initial="0" />
               <Button variant="secondary" href="/" style={{padding: '1rem'}}>Back</Button>
             </Card.Body>
         </Card>
