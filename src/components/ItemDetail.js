@@ -1,4 +1,5 @@
 import React, { useContext} from "react";
+import {useLocation} from "react-router-dom";
 import {Row, Col, Card, Button, Container} from "react-bootstrap";
 import ItemCount from "./ItemCount";
 import { CartContext } from "../context/cartContext";
@@ -8,6 +9,7 @@ import { useParams } from "react-router-dom";
 
 
 const ItemDetail = ({id, title, author, category, description, price, pictureUrl, quantity, setQuantity}) => {
+  const location = useLocation();
   const {addItem} = useContext(CartContext);
   const {removeItem} = useContext(CartContext);
   const {clearCart} = useContext(CartContext);
@@ -47,8 +49,12 @@ const ItemDetail = ({id, title, author, category, description, price, pictureUrl
               <h5><strong>Category: </strong>{category}</h5>
               <strong>Description: </strong>{description}
               <p style={{padding: '1rem'}}><strong>Price: </strong>${price}</p>
-              <ItemCount quantity={quantity} setQuantity={setQuantity} />
-              <Button onClick={handleAddItem} variant="outline-dark">Add to Cart</Button>
+              {location.pathname === "/cart"? (null) : (
+                <>
+                  <ItemCount quantity={quantity} setQuantity={setQuantity} />
+                  <Button onClick={handleAddItem} variant="outline-dark">Add to Cart</Button>
+                </>
+              )}
               <Button onClick={handleRemoveItem} variant="outline-dark">Remove book</Button>
               <Button onClick={handleClearCart} variant="outline-dark">Clear cart</Button>
               <Button onClick={handleIsInCart} variant="outline-dark">Is in cart</Button>
