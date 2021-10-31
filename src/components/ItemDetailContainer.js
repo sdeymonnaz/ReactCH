@@ -1,19 +1,18 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState} from "react";
 import { Container, Spinner } from "react-bootstrap";
 import "./ItemDetailContainer.css";
 import { getItem } from "./GetItem";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
-import { CartContext } from "../context/cartContext";
 
 
 const ItemDetailContainer = ({ products }) => {
-  const isTrue = useContext(CartContext)
   const [message, setMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [isFinished, setIsFinished] = useState(false);
   const [currentProducts, setCurrentProducts] = useState([]);
+  const [quantity, setQuantity] = useState(0);
   const itemId = useParams();
 
   useEffect(() => {
@@ -29,6 +28,7 @@ const ItemDetailContainer = ({ products }) => {
       );
     }
   }, [products, itemId]);
+
   
 
   return (
@@ -38,7 +38,7 @@ const ItemDetailContainer = ({ products }) => {
       </h3>
       {isLoading && <Container fluid> <Spinner animation="border" variant="secondary"/></Container>}
       {isFinished}
-      {currentProducts &&  <Container fluid id="detailContainer"> <ItemDetail key= {currentProducts} {...currentProducts} /> </Container>}
+      {currentProducts &&  <Container fluid id="detailContainer"> <ItemDetail id= {currentProducts.id} {...currentProducts}  quantity={quantity} setQuantity={setQuantity}/> </Container>}
     </div>
   );
 };

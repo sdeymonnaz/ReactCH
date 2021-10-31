@@ -2,19 +2,19 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Routes from './components/Routes';
 import './App.css';
-import { CartContext } from './context/cartContext';
+import { CartProvider } from "./context/cartContext";
 
 
 
 
 function App() {
   return (
-    <CartContext.Provider value={[]}>
       <div className="App">
-        <Routes />
+        <CartProvider>
+          <Routes />
+        </CartProvider>
       </div>
-    </CartContext.Provider>
-  );
+      );
 }
 
 export default App;

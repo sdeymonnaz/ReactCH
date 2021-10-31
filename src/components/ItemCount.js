@@ -1,74 +1,38 @@
-import React, { useState } from "react";
+import React from "react";
 import {Container, Row, Col, Button, InputGroup} from 'react-bootstrap';
-import { Link } from "react-router-dom";
 import "./ItemCount.css";
 import minus from '../dash-circle.svg';
 import plus from '../plus-circle.svg';
 
 
-const ItemCount = ({stock, initial}) =>{
-    const [count, setCount] = useState(parseInt(initial));
-    stock = parseInt(stock)
-    const [productAdd, setProductAdd] = useState(true);
-
+const ItemCount = ({quantity, setQuantity}) =>{
 
     const increment = () => {
-      if (count < stock){
-        setCount(count + 1);
+        setQuantity(quantity + 1);
       }        
-    }
 
     const decrement = () => {
-      if (count > 0){
-      setCount(count -1);
-      }    
-    }
-
-    const onAdd = () => {
-      setProductAdd(false);
+      setQuantity(quantity - 1);
     }
 
     return(
-      productAdd ?
         <Container id="counterContainer">
           <Row id='counter'>
             <Col md='auto'>
             <Button onClick={decrement} id="sign">
-                <img
-                    src={minus}
-                    width="30"
-                    height="30"
-                    className="d-inline-block align-top"
-                    alt="minus"
-                />
+                <img src={minus} width="30" height="30" className="d-inline-block align-top" alt="minus" />
             </Button>
             </Col>
             <Col md='auto'>
-            <InputGroup className="mb-3" id="countQty">{count}</InputGroup>
+            <InputGroup className="mb-3" id="countQty">{quantity}</InputGroup>
             </Col>
             <Col md='auto'>
             <Button onClick={increment} id="sign">
-                <img
-                    src={plus}
-                    width="30"
-                    height="30"
-                    className="d-inline-block align-top"
-                    alt="minus"
-                />
+                <img src={plus} width="30" height="30" className="d-inline-block align-top" alt="minus" />
             </Button>
             </Col>
           </Row>
-          {count > 0 && 
-          <Row>
-            <Col md='auto'>
-              <Link to="/cart">
-              <Button onClick={onAdd} variant="outline-dark">Add to cart</Button>{' '}
-              </Link>
-            </Col>
-          </Row>
-          }
         </Container>
-        :<></>
     );
 };
 
