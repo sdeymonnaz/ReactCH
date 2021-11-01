@@ -1,5 +1,5 @@
 import {Navbar, Container, Nav, NavDropdown} from 'react-bootstrap';
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import CartWidget from './CartWidget.js';
 import './NavBar.css'
 
@@ -8,7 +8,7 @@ const NavBar = () =>{
         <Navbar bg="light" expand="lg">
             <Container>
                 <Navbar.Brand>
-                    <Link to="/" className="navBarItem">Apolloni Books</Link>
+                    <NavLink to="/" className="navBarItem">Apolloni Books</NavLink>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">

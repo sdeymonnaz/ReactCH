@@ -1,8 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import ItemDetail from "./ItemDetail";
 import './Cart.css';
+import { CartContext } from "../context/cartContext";
 
-const Cart = ({items}) => {
+
+
+const Cart = () => {
+
+  const { items } = useContext(CartContext);
+  console.log('items en cart', items);
   return (
     <div id="cartContainer">
       <h1>Cart</h1>

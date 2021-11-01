@@ -1,4 +1,5 @@
 import {Card, Button, ListGroup, ListGroupItem} from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 
 const Item = ({id, title, author, description, price, pictureUrl, category, stock}) =>{
@@ -11,7 +12,7 @@ const Item = ({id, title, author, description, price, pictureUrl, category, stoc
                 <Card.Title><strong>{title}</strong></Card.Title>
                 <Card.Text><strong>Author:</strong> {author}</Card.Text>
                 <Card.Text><strong>Category:</strong> {category}</Card.Text>
-                <Button href={showDetails} variant="secondary" >Product details</Button>
+                <NavLink to={showDetails}><Button variant="secondary" >Product details</Button></NavLink>
                 <ListGroup className="list-group-flush">
                     <ListGroupItem><strong>Price:</strong> ${price.toFixed(2)}</ListGroupItem>
                 </ListGroup>

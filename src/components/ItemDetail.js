@@ -1,5 +1,5 @@
 import React, { useContext} from "react";
-import {useLocation} from "react-router-dom";
+import {useLocation, NavLink} from "react-router-dom";
 import {Row, Col, Card, Button, Container} from "react-bootstrap";
 import ItemCount from "./ItemCount";
 import { CartContext } from "../context/cartContext";
@@ -58,8 +58,8 @@ const ItemDetail = ({id, title, author, category, description, price, pictureUrl
               <Button onClick={handleRemoveItem} variant="outline-dark">Remove book</Button>
               <Button onClick={handleClearCart} variant="outline-dark">Clear cart</Button>
               <Button onClick={handleIsInCart} variant="outline-dark">Is in cart</Button>
-              <Button variant="secondary" href="/" style={{padding: '1rem', margin: '1rem'}}>Back</Button>
-              <Button variant="secondary" href="/cart" style={{padding: '1rem', margin: '1rem'}}>Go to cart</Button>
+              <NavLink to="/"><Button variant="secondary" style={{padding: '1rem', margin: '1rem'}}>Back</Button></NavLink>
+              <NavLink to="/cart"><Button variant="secondary" style={{padding: '1rem', margin: '1rem'}}>Go to cart</Button></NavLink>
             </Card.Body>
         </Card>
         </Col>

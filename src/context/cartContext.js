@@ -4,6 +4,7 @@ export const CartContext = createContext([]);
 
 export const CartProvider = ({defaultValue = [], children}) => {
     const [items, setItems] = useState(defaultValue);
+    console.log('Items en context', items);
 
     const addItem = (currentItem) => {
         console.log('currentItem', currentItem);
