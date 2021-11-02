@@ -1,14 +1,14 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState} from "react";
 import { Container, Spinner } from "react-bootstrap";
 import "./ItemDetailContainer.css";
 import { getItem } from "./GetItem";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
-import { CartContext } from "../context/cartContext";
+//import { CartContext } from "../context/cartContext";
 
 
 const ItemDetailContainer = ({ products }) => {
-  const isTrue = useContext(CartContext)
+  //const isTrue = useContext(CartContext)
   const [message, setMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(true);

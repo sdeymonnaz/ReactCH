@@ -35,7 +35,7 @@ const Promises = ({ products }) => {
       {isLoading && <Container fluid> <Spinner animation="border" variant="secondary"/></Container>}
       {isFinished}
       {currentProducts.map((product) => (
-        <Item id={product.id} {...product} />
+        <Item key={product.id} {...product} />
       ))}
     </div>
   );
