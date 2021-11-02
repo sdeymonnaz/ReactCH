@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {Container, Row, Col, Button, InputGroup} from 'react-bootstrap';
-import { Link } from "react-router-dom";
 import "./ItemCount.css";
 import minus from '../dash-circle.svg';
 import plus from '../plus-circle.svg';
@@ -61,9 +60,7 @@ const ItemCount = ({stock, initial}) =>{
           {count > 0 && 
           <Row>
             <Col md='auto'>
-              <Link to="/cart">
               <Button onClick={onAdd} variant="outline-dark">Add to cart</Button>{' '}
-              </Link>
             </Col>
           </Row>
           }

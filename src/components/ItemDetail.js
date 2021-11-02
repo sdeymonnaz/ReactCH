@@ -1,6 +1,7 @@
 import React from "react";
 import {Row, Col, Card, Button, Container} from "react-bootstrap";
 import ItemCount from "./ItemCount";
+import { NavLink } from "react-router-dom";
 
 
 
@@ -27,10 +28,10 @@ const ItemDetail = ({title, author, category, description, price, pictureUrl, st
               <p style={{padding: '1rem'}}><strong>Price: </strong>${price}</p>
               <ItemCount stock={stock} initial="0" />
               <Button variant="secondary" href="/" style={{padding: '1rem'}}>Back</Button>
+              <NavLink to="/cart"><Button variant="outline-dark">Go to cart</Button>{' '}</NavLink>
             </Card.Body>
         </Card>
         </Col>
-
       </Row>
       
       <div id="detailCont">
