@@ -8,30 +8,27 @@ export const CartProvider = ({defaultValue = [], children}) => {
 
     const addItem = (currentItem) => {
         console.log('currentItem', currentItem);
-        console.log(items.some(({item}) => item.id === currentItem.item.id))
         if (items.some(({item}) => item.id === currentItem.item.id)) {
-            console.log('items en true', items);
+            console.log('addItem currentItem id esta en carrito', items);
         return;
         }
         setItems([...items, currentItem]);
-        console.log('items en false', items);
+        console.log('addItem currentItem id NO esta en carrito', items);
     };
 
     const removeItem = (itemId) => {
-        console.log('itemId', itemId);
-        console.log('items', items);
-        return setItems(items.filter(({item}) => item.id !== itemId.id));
+        setItems(items.filter(({item}) => item.id !== parseInt(itemId.itemId)));
+        return items
     };
-
+    
     const clearCart = () => setItems(defaultValue);
 
     const isInCart = (itemId) => {
-        console.log('itemId', itemId);
-        console.log('items', items);
-        if (items.some(({item}) => item.id === itemId.id)) {
-            console.log('true');
+        if (items.some(({item}) => item.id === parseInt(itemId.itemId))) {
+            console.log('itemId en carrito true');
             return true;
         }
+        console.log('itemId en carrito false');
         return false;
     };
 

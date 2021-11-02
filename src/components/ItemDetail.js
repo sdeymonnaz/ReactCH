@@ -1,4 +1,4 @@
-import React, { useContext} from "react";
+import React, { useState, useContext} from "react";
 import {useLocation, NavLink} from "react-router-dom";
 import {Row, Col, Card, Button, Container} from "react-bootstrap";
 import ItemCount from "./ItemCount";
@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 
 
 const ItemDetail = ({id, title, author, category, description, price, pictureUrl, quantity, setQuantity}) => {
+  const [productAdd, setProductAdd] = useState(true);
   const location = useLocation();
   const {addItem} = useContext(CartContext);
   const {removeItem} = useContext(CartContext);
@@ -16,9 +17,14 @@ const ItemDetail = ({id, title, author, category, description, price, pictureUrl
   const {isInCart} = useContext(CartContext);
   const {itemId} = useParams();
 
+  const onAdd = () => {
+    setProductAdd(false);
+  };
+
   const handleAddItem = () => {
     const item = {id, title, price, pictureUrl}
     addItem({item, quantity});
+    onAdd();
   };
 
   const handleRemoveItem = () => {
@@ -50,10 +56,14 @@ const ItemDetail = ({id, title, author, category, description, price, pictureUrl
               <strong>Description: </strong>{description}
               <p style={{padding: '1rem'}}><strong>Price: </strong>${price}</p>
               {location.pathname === "/cart"? (null) : (
+                productAdd ?
                 <>
                   <ItemCount quantity={quantity} setQuantity={setQuantity} />
-                  <Button onClick={handleAddItem} variant="outline-dark">Add to Cart</Button>
+                  {quantity > 0 && 
+                    <Button onClick={handleAddItem} variant="outline-dark">Add to Cart</Button>
+                  }
                 </>
+                : <></>
               )}
               <Button onClick={handleRemoveItem} variant="outline-dark">Remove book</Button>
               <Button onClick={handleClearCart} variant="outline-dark">Clear cart</Button>
