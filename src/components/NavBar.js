@@ -25,8 +25,10 @@ const NavBar = () =>{
                             <NavLink exact to="/category/biography" activeClassName="selected" className="navBarItem">Biography</NavLink>
                         </NavDropdown.Item>
                     </NavDropdown>
-                    <NavLink exact to="/cart" className="navBarItem"><CartWidget /></NavLink>
                 </Nav>
+                <Container className="d-flex justify-content-end">
+                    <NavLink exact to="/cart" className="navBarItem" activeClassName="selected"><CartWidget /></NavLink>
+                </Container>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

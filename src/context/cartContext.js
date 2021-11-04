@@ -16,8 +16,8 @@ export const CartProvider = ({defaultValue = [], children}) => {
         console.log('addItem currentItem id NO esta en carrito', items);
     };
 
-    const removeItem = (itemId) => {
-        setItems(items.filter(({item}) => item.id !== parseInt(itemId.itemId)));
+    const removeItem = (currentItem) => {
+        setItems(items.filter(({item}) => item.id !== parseInt(currentItem.item.id)));
         return items
     };
     
