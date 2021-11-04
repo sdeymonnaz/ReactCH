@@ -3,7 +3,7 @@ import {NavLink} from "react-router-dom";
 import {Table, Button} from "react-bootstrap";
 import './Cart.css';
 import { CartContext } from "../context/cartContext";
-//import DeleteWidget from "./DeleteWidget";
+import DeleteWidget from "./DeleteWidget";
 
 
 
@@ -56,7 +56,7 @@ const Cart = () => {
                   <td style={{width: "26rem", textAlign:'left'}}>{item.title}</td>
                   <td style={{width: "8rem", textAlign:'left'}}>${item.price}</td>
                   <td style={{width: "8rem", textAlign:'left'}}>Quantity: {quantity}</td>
-                  <td style={{width: "4rem", textAlign:'center'}} onClick={handleRemoveItem}>Remove</td>
+                  <td style={{width: "4rem", textAlign:'center'}} onClick={handleRemoveItem}><DeleteWidget /></td>
                 </tr>
               </tbody>
             </Table>
