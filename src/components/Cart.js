@@ -7,23 +7,18 @@ import DeleteWidget from "./DeleteWidget";
 
 
 
-
 const Cart = () => {
   const { items } = useContext(CartContext);
   const {removeItem} = useContext(CartContext);
-  console.log('items en cart', items);
 
   const calculateTotal = () => {
     let total = 0;
     for (let i = 0; i < items.length; i++) {
       total += parseFloat(items[i].item.price) * items[i].quantity;
-      console.log('price', items[i].item.price);
     }
     return total.toFixed(2);
   }
  
-  console.log('total', calculateTotal());
-
   
   return (
     items.length !== 0 ? (
@@ -34,11 +29,7 @@ const Cart = () => {
       </div>
       {items.map((currentItem) => {
         const { item } = currentItem;
-        console.log('currentItem in Cart: ', currentItem);
-        console.log('item in Cart: ', item);
-        console.log('item.id in Cart: ', item.id);
         const itemId = currentItem.item.id;
-        console.log('currentItem.item.id in Cart: ', currentItem.item.id);
         const quantity = currentItem.quantity;
 
         const handleRemoveItem = () => {
