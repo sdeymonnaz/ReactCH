@@ -17,8 +17,20 @@ export const CartProvider = ({defaultValue = [], children}) => {
     };
 
     const removeItem = (currentItem) => {
-        setItems(items.filter(({item}) => item.id !== parseInt(currentItem.item.id)));
-        return items
+        console.log('currentItem en CartContext', currentItem);
+        console.log('currentItem.item.id en CartContext', currentItem.itemId);
+        console.log('items in CartContext', items);
+        for (let i = 0; i < items.length; i++) {
+            console.log('items[i].item.id en CartContext', items[i].item.id);
+            if (items[i].item.id === currentItem.itemId) {
+                setItems(items.filter(item => item.item.id !== currentItem.itemId));
+                return;
+            }
+        }
+        // console.log('items.item en CartContext', items.item);
+        // setItems(items.filter(({item}) => item.id !== parseInt(currentItem.item.id)));
+        // console.log('items despues de borrar',items)
+        // return items
     };
     
     const clearCart = () => setItems(defaultValue);
