@@ -1,4 +1,4 @@
-import {Container} from 'react-bootstrap';
+import {Container, Badge} from 'react-bootstrap';
 import { IconContext } from "react-icons";
 import React, {useContext} from "react";
 import { CartContext } from "../context/cartContext";
@@ -8,30 +8,21 @@ import { FaShoppingCart } from 'react-icons/fa';
 const CartWidget = () => {
     const { items } = useContext(CartContext);
     const {countItemsInCart} = useContext(CartContext);
-    const {countItems} = useContext(CartContext);
     console.log('items en CartWidget', items);
-    //console.log('quantity', items[0].quantity);
 
-
-    const handleCountItemsInCart = () => {
-        countItemsInCart();
-  }
-
-
-    //console.log(handleCountItemsInCart())
-
-
+    const handleCountItemsInCart = countItemsInCart();
 
 
     return(
         <>
         {items.length > 0 ? 
+        
         <IconContext.Provider
-            value={{size: '1.5em' }}>
-            <Container>
-                <FaShoppingCart />
+            value={{size: '2rem' }}>
+            <Container className="d-flex">
+                <FaShoppingCart className="m-1" />
+                <Badge bg="danger" className="m-2">{handleCountItemsInCart}</Badge>    
             </Container>
-        <h6>Total: {handleCountItemsInCart}</h6>
         </IconContext.Provider>
         : (null)}
         </>

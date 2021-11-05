@@ -75,7 +75,7 @@ const ItemDetail = ({id, title, author, category, description, price, pictureUrl
           </div>
           <div>
             <NavLink to="/"><Button variant="secondary" style={{padding: '1rem', margin: '1rem'}}>Back</Button></NavLink>
-            <NavLink to="/cart"><Button variant="secondary" style={{padding: '1rem', margin: '1rem'}}>Go to cart</Button></NavLink>
+            <NavLink to="/cart"><Button variant="secondary" style={{padding: '1rem', margin: '1rem'}}>Checkout</Button></NavLink>
           </div>
         </div>
         

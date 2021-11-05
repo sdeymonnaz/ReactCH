@@ -60,7 +60,6 @@ export const CartProvider = ({defaultValue = [], children}) => {
             clearCart,
             isInCart,
             countItemsInCart,
-            countItems
         }}
         >
             {children}
