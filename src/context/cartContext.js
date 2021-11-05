@@ -30,22 +30,22 @@ export const CartProvider = ({defaultValue = [], children}) => {
 
     const isInCart = (itemId) => {
         if (items.some(({item}) => item.id === parseInt(itemId.itemId))) {
-            console.log('itemId en carrito true');
+            //console.log('itemId en carrito true');
             return true;
         }
-        console.log('itemId en carrito false');
+        //console.log('itemId en carrito false');
         return false;
     };
 
     const countItemsInCart = () => {
-        console.log('countItemsInCart en cartContext', items);
-        console.log('items length en cartContext', items.length)
+        //console.log('countItemsInCart en cartContext', items);
+        //console.log('items length en cartContext', items.length)
         let countTotal = 0;
         for (let i = 0; i < items.length; i++) {
             setCountItems(countTotal += items[i].quantity);
         }
         setCountItems(countTotal);
-        console.log('countItemsInCart en cartContext', countTotal);
+        //console.log('countItemsInCart en cartContext', countTotal);
         return countTotal;
     }
 

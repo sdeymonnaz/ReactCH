@@ -8,7 +8,7 @@ import { FaShoppingCart } from 'react-icons/fa';
 const CartWidget = () => {
     const { items } = useContext(CartContext);
     const {countItemsInCart} = useContext(CartContext);
-    console.log('items en CartWidget', items);
+    //console.log('items en CartWidget', items);
 
     const handleCountItemsInCart = countItemsInCart();
 

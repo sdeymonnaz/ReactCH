@@ -1,7 +1,7 @@
 #cartContainer{
     background-color:rgb(36, 34, 34);
     color: whitesmoke;
-    height: 100vh;
+    height: 200vh;
     padding: 3rem;
 }
 
@@ -11,3 +11,17 @@
     margin-top: 3rem;
 }
 
+#totalContainer{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 3rem;
+}
+
+#trashIcon{
+    color: white;
+    font-size: 2rem;
+    margin: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+}

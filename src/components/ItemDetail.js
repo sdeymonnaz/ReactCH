@@ -1,4 +1,4 @@
-import React, { useState, useContext} from "react";
+import React, {useContext} from "react";
 import {useLocation, NavLink} from "react-router-dom";
 import {Button, Container} from "react-bootstrap";
 import ItemCount from "./ItemCount";
@@ -10,37 +10,36 @@ import { useParams } from "react-router-dom";
 
 
 const ItemDetail = ({id, title, author, category, description, price, pictureUrl, quantity, setQuantity}) => {
-  const [productAdd, setProductAdd] = useState(true);
+  //const [productAdd, setProductAdd] = useState(true);
   const location = useLocation();
   const {addItem} = useContext(CartContext);
-  const {removeItem} = useContext(CartContext);
-  const {clearCart} = useContext(CartContext);
+  //const {removeItem} = useContext(CartContext);
+  //const {clearCart} = useContext(CartContext);
   const {isInCart} = useContext(CartContext);
   const {itemId} = useParams();
   price = parseFloat(price).toFixed(2);
   //category = ToTitleCase(category);
 
-  const onAdd = () => {
-    setProductAdd(false);
-  };
+  // const onAdd = () => {
+  //   setProductAdd(false);
+  // };
 
   const handleAddItem = () => {
     const item = {id, title, price, pictureUrl}
     addItem({item, quantity});
-    onAdd();
+    //onAdd();
   };
 
-  const handleRemoveItem = () => {
-    removeItem({itemId});
-  };
+  // const handleRemoveItem = () => {
+  //   removeItem({itemId});
+  // };
 
-  const handleClearCart = () => {
-    clearCart();
-  };
+  // const handleClearCart = () => {
+  //   clearCart();
+  // };
 
-  const handleIsInCart = () => {
-    isInCart({itemId});
-  };
+  const productAdded = isInCart({itemId});
+  
     
   return (
     <> 
@@ -59,23 +58,25 @@ const ItemDetail = ({id, title, author, category, description, price, pictureUrl
             <p className="card-text" ><small className="text">Price: ${price}</small></p>
           </div>
           {location.pathname === "/cart"? (null) : (
-            productAdd ?
+            !productAdded ?
             <>
               <ItemCount quantity={quantity} setQuantity={setQuantity} />
               {quantity > 0 && 
                 <Button onClick={handleAddItem} variant="outline-dark">Add to Cart</Button>
               }
             </>
-            : <></>
+            : (null)
           )}
           <div>
-          <Button onClick={handleRemoveItem} variant="outline-dark">Remove book</Button>
-          <Button onClick={handleClearCart} variant="outline-dark">Clear cart</Button>
-          <Button onClick={handleIsInCart} variant="outline-dark">Is in cart</Button>
+          {/* <Button onClick={handleRemoveItem} variant="outline-dark">Remove book</Button> */}
+          {/* <Button onClick={handleClearCart} variant="outline-dark">Clear cart</Button> */}
+          {/* <Button onClick={handleIsInCart} variant="outline-dark">Is in cart</Button> */}
           </div>
           <div>
-            <NavLink to="/"><Button variant="secondary" style={{padding: '1rem', margin: '1rem'}}>Back</Button></NavLink>
+            {productAdded ? (
             <NavLink to="/cart"><Button variant="secondary" style={{padding: '1rem', margin: '1rem'}}>Checkout</Button></NavLink>
+            ) : (null)}
+            <NavLink to="/"><Button variant="secondary" style={{padding: '1rem', margin: '1rem'}}>Back</Button></NavLink>
           </div>
         </div>
         
