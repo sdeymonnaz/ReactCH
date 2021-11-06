@@ -4,12 +4,12 @@ import {Button, Container} from "react-bootstrap";
 import ItemCount from "./ItemCount";
 import { CartContext } from "../context/cartContext";
 import { useParams } from "react-router-dom";
-//import ToTitleCase from "./ToTitleCase";
+import ToTitleCase from "./ToTitleCase";
 
 
 
 
-const ItemDetail = ({id, title, author, category, description, price, pictureUrl, quantity, setQuantity}) => {
+const ItemDetail = ({id, title, author, categoryId, description, price, pictureUrl, quantity, setQuantity}) => {
   //const [productAdd, setProductAdd] = useState(true);
   const location = useLocation();
   const {addItem} = useContext(CartContext);
@@ -26,7 +26,6 @@ const ItemDetail = ({id, title, author, category, description, price, pictureUrl
     
     const handleAddItem = () => {
       const item = {id, title, price, pictureUrl}
-      console.log(item);
     addItem({item, quantity});
     //onAdd();
   };
@@ -40,7 +39,7 @@ const ItemDetail = ({id, title, author, category, description, price, pictureUrl
   // };
 
   const productAdded = isInCart({itemId});
-  console.log(productAdded);
+  //console.log(productAdded);
   
     
   return (
@@ -49,13 +48,13 @@ const ItemDetail = ({id, title, author, category, description, price, pictureUrl
     <div className="card mb-3" style={{maxWidth: "900px"}}>
       <div className="row g-0">
         <div className="col-md-4">
-          <img src={pictureUrl} className="img-fluid rounded-start" alt={title} />
+          <img src={pictureUrl} className="img-fluid rounded-start p-4" alt={title} />
         </div>
         <div className="col-md-8">
           <div className="card-body">
             <h5 className="card-title">{title}</h5>
             <h6 className="card-subtitle mb-2 text">{author}</h6>
-            <h6 className="card-subtitle mb-2 text-muted">Category: {category}</h6>
+            <h6 className="card-subtitle mb-2 text-muted">Category: {categoryId}</h6>
             <p className="card-text text-start">{description}</p>
             <p className="card-text" ><small className="text">Price: ${price}</small></p>
           </div>
@@ -75,10 +74,10 @@ const ItemDetail = ({id, title, author, category, description, price, pictureUrl
           {/* <Button onClick={handleIsInCart} variant="outline-dark">Is in cart</Button> */}
           </div>
           <div>
+            <NavLink to="/"><Button variant="secondary" style={{padding: '1rem', margin: '1rem'}}>Back</Button></NavLink>
             {productAdded ? (
             <NavLink to="/cart"><Button variant="secondary" style={{padding: '1rem', margin: '1rem'}}>Checkout</Button></NavLink>
             ) : (null)}
-            <NavLink to="/"><Button variant="secondary" style={{padding: '1rem', margin: '1rem'}}>Back</Button></NavLink>
           </div>
         </div>
         

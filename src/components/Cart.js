@@ -57,12 +57,12 @@ const Cart = () => {
             <Table striped bordered hover variant="dark" id="cartTable">
               <tbody>
                 <tr>
-                  <td style={{width: "4rem"}}>ID: {item.id}</td>
+                  {/* <td style={{width: "4rem"}}>ID: {item.id}</td> */}
                   <td style={{width: "4rem"}}><img alt="cover" src={item.pictureUrl} style={{width: "60px"}}></img></td>
-                  <td style={{width: "26rem", textAlign:'left'}}>{item.title}</td>
-                  <td style={{width: "8rem", textAlign:'left'}}>${item.price}</td>
-                  <td style={{width: "8rem", textAlign:'left'}}>Quantity: {quantity}</td>
-                  <td style={{width: "4rem", textAlign:'center'}} onClick={handleRemoveItem}><DeleteWidget /></td>
+                  <td style={{width: "22rem", textAlign:'left', fontSize: '1.5rem'}}>{item.title}</td>
+                  <td style={{width: "8rem", textAlign:'left', fontSize: '1.5rem'}}>${item.price}</td>
+                  <td style={{width: "8rem", textAlign:'left', fontSize: '1.5rem'}}>Qty: {quantity}</td>
+                  <td style={{width: "4rem", textAlign:'center', fontSize: '1.5rem'}} onClick={handleRemoveItem}><DeleteWidget /></td>
                 </tr>
               </tbody>
             </Table>

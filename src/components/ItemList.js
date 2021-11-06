@@ -2,10 +2,11 @@
 import "./ItemList.css";
 //import { promises } from "./promise";
 import Item from "./Item.js";
-//import { useParams } from "react-router-dom";
+
 
 const ItemList = ({ products }) => {
-  //const categoryId = useParams();
+  
+  
 
 
 
