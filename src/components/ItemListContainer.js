@@ -34,9 +34,6 @@ const ItemListContainer = ({greeting}) => {
         }).finally(() => setLoading(false));
     }, [])
 
-    console.log(products);
-    console.log(loading);
-
 
     return <div className="content">
             <Row>
