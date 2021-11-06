@@ -19,13 +19,14 @@ const ItemDetail = ({id, title, author, category, description, price, pictureUrl
   const {itemId} = useParams();
   price = parseFloat(price).toFixed(2);
   //category = ToTitleCase(category);
-
+  
   // const onAdd = () => {
-  //   setProductAdd(false);
-  // };
-
-  const handleAddItem = () => {
-    const item = {id, title, price, pictureUrl}
+    //   setProductAdd(false);
+    // };
+    
+    const handleAddItem = () => {
+      const item = {id, title, price, pictureUrl}
+      console.log(item);
     addItem({item, quantity});
     //onAdd();
   };
@@ -39,6 +40,7 @@ const ItemDetail = ({id, title, author, category, description, price, pictureUrl
   // };
 
   const productAdded = isInCart({itemId});
+  console.log(productAdded);
   
     
   return (

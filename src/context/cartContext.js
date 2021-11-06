@@ -29,7 +29,7 @@ export const CartProvider = ({defaultValue = [], children}) => {
     const clearCart = () => setItems(defaultValue);
 
     const isInCart = (itemId) => {
-        if (items.some(({item}) => item.id === parseInt(itemId.itemId))) {
+        if (items.some(({item}) => item.id === itemId.itemId)) {
             //console.log('itemId en carrito true');
             return true;
         }

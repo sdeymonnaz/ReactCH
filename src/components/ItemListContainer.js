@@ -15,15 +15,15 @@ const ItemListContainer = ({greeting}) => {
 
     useEffect(() => {
         const db = getFirestore();
-        const itemCollection = db.collection('products');
+        const itemCollection = db.collection('apoProducts');
         
-        itemCollection.get().then(snapshot => {
-            console.log(snapshot.docs);
-            if (snapshot.empty) {
+        itemCollection.get().then(querySnapshot => {
+            console.log(querySnapshot.docs);
+            if (querySnapshot.empty) {
                 console.log('No matching documents.');
                 return;
             }
-            setProducts(snapshot.docs.map(doc => doc.data({
+            setProducts(querySnapshot.docs.map((doc) => ({
                 id: doc.id,
                 ...doc.data()
 
@@ -34,6 +34,7 @@ const ItemListContainer = ({greeting}) => {
         }).finally(() => setLoading(false));
     }, [])
 
+    
 
     return <div className="content">
             <Row>

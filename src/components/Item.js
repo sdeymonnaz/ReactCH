@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 
 const Item = ({products}) =>{
-    console.log(products);
+   
 
     
     return (
