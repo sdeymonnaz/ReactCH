@@ -23,10 +23,36 @@ const Cart = () => {
     return total.toFixed(2);
   }
 
+  const total = calculateTotal();
+
   const handleClearCart = () => {
     clearCart();
   };
- 
+
+  const buyer = [
+    {name: "Juan Perez", phone: "4444-4444", email: "juanperez@gmail.com"}
+  ]
+
+  console.log(items);
+
+  const handleFinishPurchase = () => {
+    const newItems = items.map(({item, quantity}) => ({
+      item: {
+        id: item.id,
+        title: item.title,
+        price: item.price,
+      },
+      quantity
+    }));
+
+    const newOrder = {
+      buyer: buyer,
+      items: newItems,
+      total
+    }
+    console.log("Nueva orden creada: ", newOrder);
+  }
+
   
   return (
     items.length !== 0 ? (
