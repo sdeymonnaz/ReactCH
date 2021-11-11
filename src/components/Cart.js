@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import {NavLink} from "react-router-dom";
 import {Table, Button} from "react-bootstrap";
 import './Cart.css';
@@ -6,6 +6,9 @@ import { CartContext } from "../context/cartContext";
 import DeleteWidget from "./DeleteWidget";
 import { IconContext } from "react-icons";
 import { BsTrashFill} from 'react-icons/bs';
+import { getFirestore } from "../firebase";
+import firebase from "firebase/compat/app";
+import "firebase/firestore";
 
 
 
@@ -14,6 +17,7 @@ const Cart = () => {
   const { items } = useContext(CartContext);
   const {removeItem} = useContext(CartContext);
   const {clearCart} = useContext(CartContext);
+  const [orderCreatedId, setOrderCreatedId] = useState(null);
 
   const calculateTotal = () => {
     let total = 0;
@@ -29,11 +33,11 @@ const Cart = () => {
     clearCart();
   };
 
+
+  //Configuration to finish purchase
   const buyer = [
     {name: "Juan Perez", phone: "4444-4444", email: "juanperez@gmail.com"}
   ]
-
-  console.log(items);
 
   const handleFinishPurchase = () => {
     const newItems = items.map(({item, quantity}) => ({
@@ -48,10 +52,28 @@ const Cart = () => {
     const newOrder = {
       buyer: buyer,
       items: newItems,
+      date: firebase.firestore.Timestamp.fromDate(new Date()),
       total
     }
     console.log("Nueva orden creada: ", newOrder);
+    
+    const db = getFirestore();
+    const orders = db.collection('orders');
+    const batch = db.batch();
+  
+    orders.add(newOrder).then(Response => {
+    console.log("Orden creada: ", Response);
+    items.forEach(({item, quantity}) => {
+      const docRef = db.collection('apoProducts').doc(item.id);
+      batch.update(docRef, {stock: item.stock - quantity});
+    });
+    batch.commit()
+    setOrderCreatedId(Response.id);
+    }).catch(error => console.log(error));
+  
   }
+    
+
 
   
   return (
@@ -66,6 +88,7 @@ const Cart = () => {
             <BsTrashFill />
           </div>
         </IconContext.Provider>
+        <button onClick={handleFinishPurchase} className="btn btn-success">Finish Purchase</button>
       </div>
       
       {items.map((currentItem) => {

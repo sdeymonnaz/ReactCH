@@ -9,7 +9,7 @@ import ToTitleCase from "./ToTitleCase";
 
 
 
-const ItemDetail = ({id, title, author, categoryId, description, price, pictureUrl, quantity, setQuantity}) => {
+const ItemDetail = ({id, title, author, categoryId, description, price, pictureUrl, stock, quantity, setQuantity}) => {
   //const [productAdd, setProductAdd] = useState(true);
   const location = useLocation();
   const {addItem} = useContext(CartContext);
@@ -25,7 +25,7 @@ const ItemDetail = ({id, title, author, categoryId, description, price, pictureU
     // };
     
     const handleAddItem = () => {
-      const item = {id, title, price, pictureUrl}
+      const item = {id, title, price, pictureUrl, stock}
     addItem({item, quantity});
     //onAdd();
   };
