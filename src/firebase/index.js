@@ -4,7 +4,7 @@ import 'firebase/compat/firestore';
 
 
 const app = firebase.initializeApp({
-  apiKey: "AIzaSyD4O__ykVbDsXW78CTm_TrMPv6gVV1UySU",
+  apiKey: process.env.FIREBASE_API_KEY,
   authDomain: "apolloni-e7ce3.firebaseapp.com",
   projectId: "apolloni-e7ce3",
   storageBucket: "apolloni-e7ce3.appspot.com",

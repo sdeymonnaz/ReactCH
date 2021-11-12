@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-//import { getFirestore} from '../firebase/index';
 import { Spinner, Container} from "react-bootstrap";
 import "./ItemListContainer.css";
-//import {products} from '../products.js';
 import ItemList from "./ItemList.js"
 import { getFirestore } from "../firebase";
 import 'firebase/firestore';
@@ -14,9 +12,8 @@ const ItemListContainer = ({greeting}) => {
     const[loading, setLoading] = useState(true);
     const[products, setProducts] = useState([]);
     const {categoryId} = useParams();
-    const {productsByCategory} = [];
 
-
+    
     useEffect(() => {
         const db = getFirestore();
         const itemCollection = db.collection('apoProducts');

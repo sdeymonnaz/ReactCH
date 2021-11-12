@@ -12,12 +12,13 @@ import "firebase/firestore";
 
 
 
-
 const Cart = () => {
   const { items } = useContext(CartContext);
   const {removeItem} = useContext(CartContext);
   const {clearCart} = useContext(CartContext);
+  const [purchaseSent, setPurchaseSent] = useState(false);
   const [orderCreatedId, setOrderCreatedId] = useState(null);
+
 
   const calculateTotal = () => {
     let total = 0;
@@ -38,6 +39,7 @@ const Cart = () => {
   const buyer = [
     {name: "Juan Perez", phone: "4444-4444", email: "juanperez@gmail.com"}
   ]
+
 
   const handleFinishPurchase = () => {
     const newItems = items.map(({item, quantity}) => ({
@@ -69,6 +71,7 @@ const Cart = () => {
     });
     batch.commit()
     setOrderCreatedId(Response.id);
+    setPurchaseSent(true);
     }).catch(error => console.log(error));
   
   }
@@ -88,7 +91,9 @@ const Cart = () => {
             <BsTrashFill />
           </div>
         </IconContext.Provider>
-        <button onClick={handleFinishPurchase} className="btn btn-success">Finish Purchase</button>
+        {!purchaseSent ? (
+        <button onClick={handleFinishPurchase} className="btn btn-success m-3">Finish Purchase</button>
+        ) : (<p className="m-3">Your order ID is {orderCreatedId}</p>)}
       </div>
       
       {items.map((currentItem) => {

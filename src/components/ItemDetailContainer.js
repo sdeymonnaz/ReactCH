@@ -1,34 +1,16 @@
 import { useEffect, useState} from "react";
 import { Container, Spinner } from "react-bootstrap";
 import "./ItemDetailContainer.css";
-//import { getItem } from "./GetItem";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 import { getFirestore } from "../firebase";
 
 
 const ItemDetailContainer = ({ products }) => {
-  //const [message, setMessage] = useState("");
-  //const [isSuccess, setIsSuccess] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  //const [isFinished, setIsFinished] = useState(false);
   const [currentProduct, setCurrentProduct] = useState({});
   const [quantity, setQuantity] = useState(0);
   const {itemId} = useParams();
-
-/*   useEffect(() => {
-    if (products) {
-      getItem(
-        products,
-        itemId,
-        setMessage,
-        setIsSuccess,
-        setIsLoading,
-        setIsFinished,
-        setCurrentProducts
-      );
-    }
-  }, [products, itemId]); */
 
 
   useEffect(() => {

@@ -13,7 +13,6 @@ const Item = ({products}) =>{
                 <Card.Body>
                     <Card.Title><strong>{product.title}</strong></Card.Title>
                     <Card.Text><strong>Author:</strong> {product.author}</Card.Text>
-                    {/* <Card.Text><strong>Category:</strong> {product.category}</Card.Text> */}
                     <NavLink to={`/item/${product.id}`}><Button variant="secondary" >Product details</Button></NavLink>
                     <ListGroup className="list-group-flush">
                         <ListGroupItem><strong>Price:</strong> ${product.price.toFixed(2)}</ListGroupItem>

@@ -4,43 +4,21 @@ import {Button, Container} from "react-bootstrap";
 import ItemCount from "./ItemCount";
 import { CartContext } from "../context/cartContext";
 import { useParams } from "react-router-dom";
-import ToTitleCase from "./ToTitleCase";
-
-
 
 
 const ItemDetail = ({id, title, author, categoryId, description, price, pictureUrl, stock, quantity, setQuantity}) => {
-  //const [productAdd, setProductAdd] = useState(true);
   const location = useLocation();
   const {addItem} = useContext(CartContext);
-  //const {removeItem} = useContext(CartContext);
-  //const {clearCart} = useContext(CartContext);
   const {isInCart} = useContext(CartContext);
   const {itemId} = useParams();
   price = parseFloat(price).toFixed(2);
-  //category = ToTitleCase(category);
-  
-  // const onAdd = () => {
-    //   setProductAdd(false);
-    // };
     
     const handleAddItem = () => {
       const item = {id, title, price, pictureUrl, stock}
     addItem({item, quantity});
-    //onAdd();
   };
 
-  // const handleRemoveItem = () => {
-  //   removeItem({itemId});
-  // };
-
-  // const handleClearCart = () => {
-  //   clearCart();
-  // };
-
-  const productAdded = isInCart({itemId});
-  //console.log(productAdded);
-  
+  const productAdded = isInCart({itemId}); 
     
   return (
     <> 
@@ -68,11 +46,6 @@ const ItemDetail = ({id, title, author, categoryId, description, price, pictureU
             </>
             : (null)
           )}
-          <div>
-          {/* <Button onClick={handleRemoveItem} variant="outline-dark">Remove book</Button> */}
-          {/* <Button onClick={handleClearCart} variant="outline-dark">Clear cart</Button> */}
-          {/* <Button onClick={handleIsInCart} variant="outline-dark">Is in cart</Button> */}
-          </div>
           <div>
             <NavLink to="/"><Button variant="secondary" style={{padding: '1rem', margin: '1rem'}}>Back</Button></NavLink>
             {productAdded ? (
