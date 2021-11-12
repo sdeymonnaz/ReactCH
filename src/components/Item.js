@@ -8,7 +8,7 @@ const Item = ({products}) =>{
     
     return (
         products.map((product) => (
-            <Card style={{ width: '18rem', height: 'auto', color: "black", padding: "1rem", margin: "2rem"}}>
+            <Card key={product.id} style={{ width: '18rem', height: 'auto', color: "black", padding: "1rem", margin: "2rem"}}>
                 <Card.Img style={{width: "255px", height: '385px'}} variant="top" src={product.pictureUrl} alt="{product.title}"/>
                 <Card.Body>
                     <Card.Title><strong>{product.title}</strong></Card.Title>
