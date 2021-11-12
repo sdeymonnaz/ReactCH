@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 import {NavLink} from "react-router-dom";
-import {Table, Button} from "react-bootstrap";
+import {Table, Button, Modal} from "react-bootstrap";
 import './Cart.css';
 import { CartContext } from "../context/cartContext";
 import DeleteWidget from "./DeleteWidget";
@@ -9,6 +9,9 @@ import { BsTrashFill} from 'react-icons/bs';
 import { getFirestore } from "../firebase";
 import firebase from "firebase/compat/app";
 import "firebase/firestore";
+import OrderConfirmation from "./OrderConfirmation";
+
+
 
 
 
@@ -18,8 +21,14 @@ const Cart = () => {
   const {clearCart} = useContext(CartContext);
   const [purchaseSent, setPurchaseSent] = useState(false);
   const [orderCreatedId, setOrderCreatedId] = useState(null);
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
+  const [buyer, setBuyer] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const [showOrderConfirmation, setShowOrderConfirmation] = useState(false);
 
-
+  
   const calculateTotal = () => {
     let total = 0;
     for (let i = 0; i < items.length; i++) {
@@ -35,11 +44,20 @@ const Cart = () => {
   };
 
 
-  //Configuration to finish purchase
-  const buyer = [
-    {name: "Juan Perez", phone: "4444-4444", email: "juanperez@gmail.com"}
-  ]
-
+  const handleCloseModal = () => setShowModal(false);
+  const handleShowModal = () => setShowModal(true);
+  
+  
+  const handleSubmit = (e) => {
+    handleCloseModal();
+    e.preventDefault();
+    setBuyer({
+        name,
+        phone,
+        email
+    });
+  }
+  
 
   const handleFinishPurchase = () => {
     const newItems = items.map(({item, quantity}) => ({
@@ -58,6 +76,7 @@ const Cart = () => {
       total
     }
     console.log("Nueva orden creada: ", newOrder);
+    setShowOrderConfirmation(true)
     
     const db = getFirestore();
     const orders = db.collection('orders');
@@ -73,17 +92,37 @@ const Cart = () => {
     setOrderCreatedId(Response.id);
     setPurchaseSent(true);
     }).catch(error => console.log(error));
-  
   }
-    
-
-
   
   return (
     items.length !== 0 ? (
     <div id="cartContainer" className="p-3">
       <h1>Cart</h1>
-     
+      <>
+      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>Contact Details</Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="form-group">
+          <input 
+              onChange={(e) => setName(e.target.value)}
+              type="text" className="form-control mb-2" placeholder="Name"
+          />
+          <input 
+              onChange={(e) => setPhone(e.target.value)}
+              type="text" className="form-control mb-2" placeholder="Phone"
+          />
+          <input
+              onChange={(e) => setEmail(e.target.value)}
+              type="text" className="form-control mb-2" placeholder="email"
+          />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
+          <Button variant="success" onClick={handleSubmit}>Submit Details</Button>
+        </Modal.Footer>
+      </Modal>
+      </>
       <div className="container" style={{display:'flex', justifyContent:'end'}} id="totalContainer">
         <h4 style={{margin: "2rem", fontSize: "2rem"}}>Total: ${calculateTotal()}</h4>
         <IconContext.Provider value={{ color: "white", backgroundcolor: "rgb(36, 34, 34)", size: "2rem", className: "global-class-name" }} id="trashIcon">
@@ -91,9 +130,19 @@ const Cart = () => {
             <BsTrashFill />
           </div>
         </IconContext.Provider>
-        {!purchaseSent ? (
-        <button onClick={handleFinishPurchase} className="btn btn-success m-3">Finish Purchase</button>
-        ) : (<p className="m-3">Your order ID is {orderCreatedId}</p>)}
+        {!buyer.name ? (
+          <Button variant="secondary" className="m-3" onClick={handleShowModal}>Checkout</Button>
+        ) : (null)}
+        {buyer.name && !purchaseSent ? (
+          <button onClick={handleFinishPurchase} className="btn btn-success m-3">Finish Purchase</button>
+          ) : (null)}
+        {orderCreatedId ? (
+            <OrderConfirmation 
+            show={showOrderConfirmation}
+            onHide={() => setShowOrderConfirmation(false)}
+            orderid={orderCreatedId}
+            name = {buyer.name}/>
+        ) : (null)}
       </div>
       
       {items.map((currentItem) => {
@@ -111,7 +160,6 @@ const Cart = () => {
             <Table striped bordered hover variant="dark" id="cartTable">
               <tbody>
                 <tr>
-                  {/* <td style={{width: "4rem"}}>ID: {item.id}</td> */}
                   <td style={{width: "4rem"}}><img alt="cover" src={item.pictureUrl} style={{width: "60px"}}></img></td>
                   <td style={{width: "22rem", textAlign:'left', fontSize: '1.5rem'}}>{item.title}</td>
                   <td style={{width: "8rem", textAlign:'left', fontSize: '1.5rem'}}>${item.price}</td>
