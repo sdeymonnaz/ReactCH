@@ -11,16 +11,10 @@ const CartWidget = () => {
     const [countItems, setCountItems] = useState(0);
 
     
-    
-    
     useEffect(() => {
         const count = countItemsInCart();
         setCountItems(count);
     }, [countItemsInCart, countItems]);
-    
-
-    //const handleCountItemsInCart = countItemsInCart();
-
     
 
     return(
