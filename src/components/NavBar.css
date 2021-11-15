@@ -6,8 +6,12 @@
     color: black;
     text-decoration: none;
     align-items: center;
-    text-align: center;
-    margin-top: 0.5rem;
+    text-align: left;
+    margin: 0.5rem;
+}
+
+#navBarHome{
+    font-size: 2rem;
 }
 
 .selected{

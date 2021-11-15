@@ -12,9 +12,6 @@ import "firebase/firestore";
 import OrderConfirmation from "./OrderConfirmation";
 
 
-
-
-
 const Cart = () => {
   const { items } = useContext(CartContext);
   const {removeItem} = useContext(CartContext);
@@ -155,8 +152,7 @@ const Cart = () => {
         };
         
         return (
-          <>
-          <div className="container">
+          <div className="container" key={item.id}>
             <Table striped bordered hover variant="dark" id="cartTable">
               <tbody>
                 <tr>
@@ -169,7 +165,6 @@ const Cart = () => {
               </tbody>
             </Table>
           </div>      
-         </>
         )
       })}
     </div>
