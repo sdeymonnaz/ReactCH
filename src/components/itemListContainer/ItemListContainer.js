@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import { Spinner, Container} from "react-bootstrap";
 import "./ItemListContainer.css";
-import ItemList from "./ItemList.js"
-import { getFirestore } from "../firebase";
+import ItemList from "../itemList/ItemList.js"
+import { getFirestore } from "../../firebase";
 import 'firebase/firestore';
 import { useParams } from "react-router-dom";
-import ToTitleCase from "./ToTitleCase";
+import ToTitleCase from "../ToTitleCase";
 
 
 const ItemListContainer = ({greeting}) => {

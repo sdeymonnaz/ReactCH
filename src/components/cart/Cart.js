@@ -2,14 +2,14 @@ import React, {useContext, useState} from "react";
 import {NavLink} from "react-router-dom";
 import {Table, Button, Modal} from "react-bootstrap";
 import './Cart.css';
-import { CartContext } from "../context/cartContext";
-import DeleteWidget from "./DeleteWidget";
+import { CartContext } from "../../context/cartContext";
+import DeleteWidget from "../DeleteWidget";
 import { IconContext } from "react-icons";
 import { BsTrashFill} from 'react-icons/bs';
-import { getFirestore } from "../firebase";
+import { getFirestore } from "../../firebase";
 import firebase from "firebase/compat/app";
 import "firebase/firestore";
-import OrderConfirmation from "./OrderConfirmation";
+import OrderConfirmation from "../OrderConfirmation";
 
 
 const Cart = () => {
@@ -25,7 +25,7 @@ const Cart = () => {
   const [showModal, setShowModal] = useState(false);
   const [showOrderConfirmation, setShowOrderConfirmation] = useState(false);
 
-  
+  //Function to handle the purchase total to pay calculation
   const calculateTotal = () => {
     let total = 0;
     for (let i = 0; i < items.length; i++) {
@@ -34,17 +34,19 @@ const Cart = () => {
     return total.toFixed(2);
   }
 
+  //Calculates total to pay ans store it in variable total
   const total = calculateTotal();
 
+  //FUnction to clear the cart when the bin button is clicked
   const handleClearCart = () => {
     clearCart();
   };
 
-
+  //Functions to handle the show/hide of customer contact details modal
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
   
-  
+  //Function to hande the submission of customer contact details from modal
   const handleSubmit = (e) => {
     handleCloseModal();
     e.preventDefault();
@@ -55,7 +57,7 @@ const Cart = () => {
     });
   }
   
-
+  //Function to handle the submission of the order to Firebase
   const handleFinishPurchase = () => {
     const newItems = items.map(({item, quantity}) => ({
       item: {
@@ -72,15 +74,13 @@ const Cart = () => {
       date: firebase.firestore.Timestamp.fromDate(new Date()),
       total
     }
-    console.log("Nueva orden creada: ", newOrder);
-    setShowOrderConfirmation(true)
+    setShowOrderConfirmation(true) //Show order confirmation modal in the screen
     
     const db = getFirestore();
     const orders = db.collection('orders');
     const batch = db.batch();
   
     orders.add(newOrder).then(Response => {
-    console.log("Orden creada: ", Response);
     items.forEach(({item, quantity}) => {
       const docRef = db.collection('apoProducts').doc(item.id);
       batch.update(docRef, {stock: item.stock - quantity});

@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import NavBar from "./NavBar.js";
-import ItemDetailContainer from "./ItemDetailContainer";
-import ItemListContainer from "./ItemListContainer";
-import NotFound from "./NotFound";
-import Cart from "./Cart";
+import NavBar from "./navBar/NavBar.js";
+import ItemDetailContainer from "./itemDetailContainer/ItemDetailContainer";
+import ItemListContainer from "./itemListContainer/ItemListContainer";
+import NotFound from "./notFound/NotFound";
+import Cart from "./cart/Cart";
 import { products } from "../products";
 
 

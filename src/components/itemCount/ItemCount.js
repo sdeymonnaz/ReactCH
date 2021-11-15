@@ -1,8 +1,8 @@
 import React from "react";
 import {Container, Row, Col, Button, InputGroup} from 'react-bootstrap';
 import "./ItemCount.css";
-import minus from '../dash-circle.svg';
-import plus from '../plus-circle.svg';
+import minus from './dash-circle.svg';
+import plus from './plus-circle.svg';
 
 
 const ItemCount = ({quantity, setQuantity}) =>{

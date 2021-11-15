@@ -1,7 +1,7 @@
 import React, {useContext} from "react";
 import {useLocation, NavLink} from "react-router-dom";
 import {Button, Container} from "react-bootstrap";
-import ItemCount from "./ItemCount";
+import ItemCount from "./itemCount/ItemCount";
 import { CartContext } from "../context/cartContext";
 import { useParams } from "react-router-dom";
 

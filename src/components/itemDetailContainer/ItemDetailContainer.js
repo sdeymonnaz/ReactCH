@@ -1,9 +1,9 @@
 import { useEffect, useState} from "react";
 import { Container, Spinner } from "react-bootstrap";
 import "./ItemDetailContainer.css";
-import ItemDetail from "./ItemDetail";
+import ItemDetail from "../ItemDetail";
 import { useParams } from "react-router-dom";
-import { getFirestore } from "../firebase";
+import { getFirestore } from "../../firebase";
 
 
 const ItemDetailContainer = ({ products }) => {
