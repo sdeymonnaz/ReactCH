@@ -33,7 +33,6 @@ const ItemDetailContainer = ({ products }) => {
 }, [itemId]);
 
   
-
   return (
     <div className="container-fluid" id="listContainer">
       {isLoading && <Container fluid> <Spinner animation="border" variant="secondary"/></Container>}

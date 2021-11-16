@@ -13,8 +13,10 @@ const ItemDetail = ({id, title, author, categoryId, description, price, pictureU
   const {itemId} = useParams();
   price = parseFloat(price).toFixed(2);
     
-    const handleAddItem = () => {
-      const item = {id, title, price, pictureUrl, stock}
+
+  //FUnction to add item to cart
+  const handleAddItem = () => {
+    const item = {id, title, price, pictureUrl, stock}
     addItem({item, quantity});
   };
 

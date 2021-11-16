@@ -8,8 +8,8 @@ import Cart from "./cart/Cart";
 import { products } from "../products";
 
 
-
 const Routes = () => {
+  
   return (
     <BrowserRouter>
       <NavBar />
