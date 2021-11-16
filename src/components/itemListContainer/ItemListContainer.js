@@ -5,7 +5,7 @@ import ItemList from "../itemList/ItemList.js"
 import { getFirestore } from "../../firebase";
 import 'firebase/firestore';
 import { useParams } from "react-router-dom";
-import ToTitleCase from "../ToTitleCase";
+import ToTitleCase from "../widgets/ToTitleCase";
 
 
 const ItemListContainer = ({greeting}) => {

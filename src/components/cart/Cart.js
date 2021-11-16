@@ -3,13 +3,13 @@ import {NavLink} from "react-router-dom";
 import {Table, Button, Modal} from "react-bootstrap";
 import './Cart.css';
 import { CartContext } from "../../context/cartContext";
-import DeleteWidget from "../DeleteWidget";
+import DeleteWidget from "../widgets/DeleteWidget";
 import { IconContext } from "react-icons";
 import { BsTrashFill} from 'react-icons/bs';
 import { getFirestore } from "../../firebase";
 import firebase from "firebase/compat/app";
 import "firebase/firestore";
-import OrderConfirmation from "../OrderConfirmation";
+import OrderConfirmation from "../orderConfirmation/OrderConfirmation";
 
 
 const Cart = () => {

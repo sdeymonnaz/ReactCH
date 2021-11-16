@@ -1,7 +1,7 @@
 import { useEffect, useState} from "react";
 import { Container, Spinner } from "react-bootstrap";
 import "./ItemDetailContainer.css";
-import ItemDetail from "../ItemDetail";
+import ItemDetail from "../itemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 import { getFirestore } from "../../firebase";
 
