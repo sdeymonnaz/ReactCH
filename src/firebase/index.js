@@ -7,9 +7,9 @@ const app = firebase.initializeApp({
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
   projectId: "apolloni-e7ce3",
-  storageBucket: "apolloni-e7ce3.appspot.com",
-  messagingSenderId: "948775172465",
-  appId: "1:948775172465:web:9578da1ff09b5001b61ed0"
+  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.FIREBASE_APP_ID
 });
 
 export const getFirebase = () => app;
